@@ -8,7 +8,8 @@
 
 /* -------------------- 🌈 Variables -------------------- */
 :root {
-    --bg-color: #e3f2fd;
+    --bg-color: #222;
+    /*e3f2fd*/
     --card-bg: #ffffff;
     --primary-color: #0078d7;
     --text-color: #333333;
@@ -47,6 +48,7 @@ body {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+
 }
 
 
@@ -59,6 +61,7 @@ body {
     flex-wrap: wrap;
     width: 100%;
     position: relative;
+
 }
 
 .search__input {
@@ -67,6 +70,7 @@ body {
     border: 1px solid #ccc;
     font-size: 1rem;
     transition: var(--transition);
+    width: 100%;
 }
 
 .search__input:focus {
@@ -83,14 +87,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .action--location button {
     all: unset;
 }
 
-#locate-btn>img {
+.action--location img {
     background: var(--card-bg);
 }
 
@@ -108,6 +111,7 @@ body {
     width: 100%;
     max-width: 420px;
     text-align: center;
+    margin-top: 2rem;
 }
 
 .weather-card {
@@ -215,17 +219,12 @@ body {
 }
 
 /* -------------------- 📱 Responsive -------------------- */
-@media (max-width: 480px) {
-    .weather-card {
-        padding: 1.5rem;
+@media screen and (min-width:520px) {
+    .app-header {
+        justify-content: center;
     }
 
-    .search__input {
-        width: 100%;
+    .search-form {
+        width: 40%;
     }
-
-    .weather-card__temp {
-        font-size: 1.6rem;
-    }
-
 }
