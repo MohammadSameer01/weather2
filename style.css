@@ -1,43 +1,231 @@
-/* style.css */
+/* =========================================================
+   🌤️ Weatherly – Professional Weather App Styles
+   Author: Mohammad Sameer
+   ========================================================= */
+
+/* -------------------- Google Fonts -------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* -------------------- 🌈 Variables -------------------- */
+:root {
+    --bg-color: #e3f2fd;
+    --card-bg: #ffffff;
+    --primary-color: #0078d7;
+    --text-color: #333333;
+    --error-color: #d93025;
+    --radius: 1rem;
+    --transition: all 0.3s ease;
+    --font-montserrat: "Montserrat", sans-serif;
+}
+
+/* -------------------- 🔧 Reset -------------------- */
+* {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: var(--font-montserrat);
+    background: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 12px;
+}
+
+/* -------------------- 🧱 App Header -------------------- */
+.app-header {
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+/* -------------------- 🔍 Search Form -------------------- */
+.search-form {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-    background: #f2f2f2;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    width: 100%;
+    position: relative;
 }
 
-.weather-app {
-    background: #fff;
-    padding: 30px 40px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+.search__input {
+    padding: 1rem;
+    border-radius: var(--radius);
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.search__input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(0, 120, 215, 0.2);
+}
+
+.action--location {
+    position: absolute;
+    height: 50px;
+    aspect-ratio: 1;
+    right: 51px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.action--location button {
+    all: unset;
+}
+
+#locate-btn>img {
+    background: var(--card-bg);
+}
+
+.search__button {
+    position: absolute;
+    height: 50px;
+    aspect-ratio: 1;
+    right: 1px;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    background: var(--card-bg);
+}
+
+/* -------------------- 🌤️ Weather Card -------------------- */
+.weather {
+    width: 100%;
+    max-width: 420px;
     text-align: center;
 }
 
-input {
-    padding: 10px;
-    width: 200px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+.weather-card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+    animation: fadeIn 0.6s ease-in-out;
 }
 
-button {
-    padding: 10px 15px;
-    margin-left: 10px;
-    border: none;
-    border-radius: 5px;
-    background: #007BFF;
-    color: white;
-    cursor: pointer;
+.weather-card__city {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    letter-spacing: 0.5px;
 }
 
-button:hover {
-    background: #0056b3;
+.weather-card__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
 }
 
-.weather-result {
-    margin-top: 20px;
+.weather-card__icon {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    animation: float 3s ease-in-out infinite;
+}
+
+.weather-card__details {
+    text-align: left;
+}
+
+.weather-card__temp {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.weather-card__desc {
+    text-transform: capitalize;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+/* -------------------- ⚠️ Error Message -------------------- */
+.weather__error {
+    margin-top: 1.5rem;
+    color: var(--error-color);
+    font-weight: 500;
+    text-align: center;
+}
+
+/* -------------------- ⚙️ Footer -------------------- */
+.app-footer {
+    margin-top: auto;
+    text-align: center;
+    color: #555;
+    font-size: 0.9rem;
+    padding-top: 2rem;
+}
+
+.app-footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.app-footer a:hover {
+    text-decoration: underline;
+}
+
+/* -------------------- 🧩 Utilities -------------------- */
+.hidden {
+    display: none !important;
+}
+
+/* -------------------- ✨ Animations -------------------- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+/* -------------------- 📱 Responsive -------------------- */
+@media (max-width: 480px) {
+    .weather-card {
+        padding: 1.5rem;
+    }
+
+    .search__input {
+        width: 100%;
+    }
+
+    .weather-card__temp {
+        font-size: 1.6rem;
+    }
+
 }

@@ -2,25 +2,72 @@
 <html lang="en">
 
 <head>
+    <!-- 🌤️ Meta Information -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
+    <meta name="description" content="Check real-time weather updates for any city in a simple and elegant design.">
+    <meta name="theme-color" content="#0078d7">
+
+    <!-- 🏷️ Title -->
+    <title>Weather | Real-Time Weather Updates</title>
+
+    <!-- 🎨 Stylesheet -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- 🌐 Favicon (to be added) -->
+    <link rel="icon" href="assets/icons/weather-icon.png" type="image/png">
+
 </head>
 
 <body>
-    <div class="weather-app">
-        <h1>Weather App</h1>
-        <input type="text" id="cityInput" placeholder="Enter city name">
-        <button id="getWeatherBtn">Get Weather</button>
-        <button id="autoDetectBtn">Auto Detect</button>
+    <!-- ========================= HEADER ========================= -->
+    <header class="app-header">
+        <form id="search-form" class="search-form" aria-label="Search city weather">
+            <input type="text" id="city-input" class="search__input" placeholder="Search for cities..."
+                aria-label="City name" required />
+            <!-- Locate me button -->
+            <div class="action--location">
+                <button id="locate-btn" class="button button--icon" aria-label="Get weather for your current location"
+                    title="Get weather for your current location">
+                    <img src="assets/icons/location.png" loading="lazy" alt="Location icon" />
+                </button>
+            </div>
+            <!-- Search button -->
+            <button type="submit" class="search__button">
+                <img src="assets/icons/search.png" loading="lazy" alt="Search icon" />
+            </button>
+        </form>
+    </header>
 
-        <div class="weather-result" id="weatherResult">
-            <!-- Weather info will appear here -->
-        </div>
-    </div>
+    <!-- ========================= MAIN CONTENT ========================= -->
+    <main class="weather" aria-live="polite">
+        <section id="weather-card" class="weather-card hidden">
+            <h2 id="city-name" class="weather-card__city">City Name</h2>
 
-    <script src="script.js"></script>
+            <div class="weather-card__content">
+                <img id="weather-icon" class="weather-card__icon" src="" alt="Weather condition icon" />
+                <div class="weather-card__details">
+                    <p id="temperature" class="weather-card__temp">--°C</p>
+                    <p id="description" class="weather-card__desc">--</p>
+                </div>
+            </div>
+        </section>
+
+        <p id="error-message" class="weather__error hidden" role="alert"></p>
+    </main>
+
+    <!-- ========================= FOOTER ========================= -->
+    <footer class="app-footer">
+        <p>
+            Powered by
+            <a href="https://openweathermap.org/" target="_blank" rel="noopener noreferrer">
+                OpenWeather
+            </a>
+        </p>
+    </footer>
+
+    <!-- ========================= SCRIPTS ========================= -->
+    <script src="script.js" defer></script>
 </body>
 
 </html>
